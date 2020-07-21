@@ -1,0 +1,108 @@
+#header {
+    width: 100% auto;
+    height: auto;
+    background-color: #f1c40f;
+    margin: 10px auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+#logo {
+    width: 10%;
+    height: auto;
+    margin: 10px;
+    z-index: +10px;
+}
+
+#navbar {
+    background-color: black;
+}
+
+#body {
+    width: 100% auto;
+    height: 1000px;
+    position: relative;
+    border-radius: 10px;
+}
+
+#sidebar {
+    background-color: rebeccapurple;
+    width: 19%;
+    height: auto;
+    position: absolute;
+    left: 0px;
+    border-radius: 10px;
+}
+
+#content {
+    background-color: #1abc9c;
+    width: 80%;
+    height: auto;
+    position: absolute;
+    float: left;
+    right: 0px;
+    border-radius: 10px;
+}
+
+#img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+}
+
+#con {
+    padding-left: 100px;
+    margin-top: 20px;
+}
+
+.productImg {
+    position: relative;
+    border-radius: 10px;
+}
+
+.productImg:hover {
+    box-shadow: 5px 10px 8px hsl(0, 0%, 100%, 0.5);
+    border: 2px solid #5cace2;
+    transition-duration: 2s;
+}
+
+.productDetails {
+    position: absolute;
+    bottom: 10px;
+    left: 35%;
+    text-align: center;
+}
+
+.price {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: hsl(60, 100%, 50%, 0.3);
+    border-radius: 200px;
+    padding: 10px;
+    margin: 5px;
+    display: none;
+}
+
+.navItem:hover {
+    background-color: #3c3c3c;
+}
+
+.modalBody {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#goTop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: white;
+}
+
+.foot {
+    height: 400px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+}
