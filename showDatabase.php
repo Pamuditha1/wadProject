@@ -42,7 +42,7 @@
         $result = $conn->query($sql);
 
         echo'
-        <table class="table table-hover table-dark">
+        <table class="table table-hover table-dark ">
         <thead>
           <tr>
             <th scope="col">Oder No</th>

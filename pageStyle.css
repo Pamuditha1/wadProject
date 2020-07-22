@@ -14,18 +14,27 @@
     z-index: +10px;
 }
 
-#navbar {
-    background-color: black;
+.itemCode {
+    background-color: yellow;
+    margin-top: 10px;
+    width: 80%;
 }
 
-#body {
+
+/* #navbar {
+    background-color: black;
+} */
+
+
+/* #body {
     width: 100% auto;
     height: 1000px;
     position: relative;
     border-radius: 10px;
-}
+} */
 
-#sidebar {
+
+/* #sidebar {
     background-color: rebeccapurple;
     width: 19%;
     height: auto;
@@ -42,7 +51,7 @@
     float: left;
     right: 0px;
     border-radius: 10px;
-}
+} */
 
 #img {
     width: 100%;
@@ -77,15 +86,11 @@
     position: absolute;
     right: 10px;
     top: 10px;
-    background-color: hsl(60, 100%, 50%, 0.3);
+    background-color: hsl(60, 100%, 50%, 0.5);
     border-radius: 200px;
     padding: 10px;
     margin: 5px;
     display: none;
-}
-
-.navItem:hover {
-    background-color: #3c3c3c;
 }
 
 .modalBody {
@@ -105,4 +110,5 @@
     height: 400px;
     background-color: #ecf0f1;
     border-radius: 10px;
+    margin-top: 150px;
 }
