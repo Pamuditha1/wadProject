@@ -41,10 +41,22 @@
     padding: 10px
 }
 
+.cardStyle:hover {
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.3), 0 6px 20px 0 rgba(255, 255, 255, 0.1);
+}
+
 .modalBody {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 20px;
+    top: 40%;
+    background-color: hsl(0, 0%, 100%, 0.4);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.modalBody:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-color: hsl(0, 0%, 100%, 0.7);
 }
 
 .productImg {

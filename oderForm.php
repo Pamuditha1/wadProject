@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <!-- <link rel="stylesheet" type="text/css" href="oderFormStyle.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="mailStyle.css"> -->
     <title>Odering Form</title>
 
     <style>
@@ -25,7 +25,7 @@
             padding-top: 100px;
             padding-bottom: 100px;
             background-color: hsla(170, 95%, 55%, 0.7);
-            border-radius: 100px;
+            border-radius: 30px;
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.4);
             
         }
@@ -33,10 +33,11 @@
             color:red
         }
         .formMargin {
-            margin-left: 150px;
-            margin-right: 150px;
+            margin-left: 15px;
+            margin-right: 15px;
             padding: 5px;
         }
+
         .formMargin:hover{
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
@@ -45,6 +46,17 @@
             color: white;
             font-family: "Lucida Console", Courier, monospace;
             font-weight: 900;
+        }
+
+        @media only screen and (min-width: 800px) {
+            .formMargin {
+            margin-left: 150px;
+            margin-right: 150px;
+            padding: 5px;
+            }
+            .formD{
+                border-radius: 100px;
+            }
         }
     </style>
 
@@ -57,8 +69,9 @@
     <p style="color: red;">*for the moment you have to place oder for each item one by one</p>
     <h3 id="msg" >Successfully Placed the Oder</h3>
 
-            
-            <form class="form-horizontal formD" id="form" onload="dateTime()" method="post" enctype="multipart/form-data" action="oderForm.php">
+         
+<!-------------------- Form ------------------------------------->
+            <form class="form-horizontal col-xs-12 formD" id="form" onload="dateTime()" method="post" enctype="multipart/form-data" action="oderForm.php">
 
                 <?php
                     $rand=rand();
@@ -99,6 +112,10 @@
                         <span class="help-block validError" id="ltelErr"></span>
                     </div>
                     <div class="form-group formMargin">
+                        <label for="email" class="control-label">Email :    </label>
+                        <input class="form-control" type="text" id="email" name="email">
+                    </div>
+                    <div class="form-group formMargin">
                         <label for="adrs" class="control-label">Address :    </label>
                         <textarea class="form-control" type="text" id="adrs" name="adrs" rows="5" required></textarea>
                     </div>
@@ -133,11 +150,11 @@
                         <button class="btn btn-warning btn-lg" type="reset" id="reset" onclick="resetForm()">Clear</button>
                     </div>
 
-            </form>
-        
+            </form>        
 
     </div>
 
+<!-- ...................Javascript Validations and Functions.......................... -->
     
     <script>
           
@@ -221,71 +238,18 @@
             }
         }
 
-
-
         function clearError(id) {
             document.getElementById(id).innerHTML = "";
-        }
-        
-
-
-    
-    </script>
-        
-    <!-- <form id="form" onload="dateTime()" method="post" enctype="multipart/form-data" action="oderForm.php">
-
-        <?php
-            $rand=rand();
-            $_SESSION['rand']=$rand;
-        ?>
-            <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
+        }    
    
-        
-            <label>Date : </label>
-            <input type="text" id="date" name="date" readonly>
-            <br><br>
-            <label>Time : </label>
-            <input type="text" id="time" name="time" readonly>
-            <br><br><br><br><br>
-            <label>Name : </label>
-            <input type="text" id="name" name="name" required>
-            <br><br>
-            <label>Contact No (Mobile) : </label>
-            <input type="text" id="htel" name="htel" required>
-            <br><br>
-            <label>Contact No (Land) : </label>
-            <input type="text" id="ltel" name="ltel" >
-            <br><br>
-            <label>Address :    </label>
-            <textarea type="text" id="adrs" name="adrs" required></textarea>
-            <br><br><br><br><br><br>
-            <label>Item Code :    </label>
-            <input type="text" id="itm" name="itm" required>
-            <p style="margin-left: 44%;color:red">*copy the item code from the product view</p>
-            <br>
-            <label>Size :    </label>
-            <select id="size" name="size" required>
-                <option value="xs">XS</option>
-                <option value="s">S</option>
-                <option value="m">M</option>
-                <option value="l">L</option>
-                <option value="xl">XL</option>
-            </select>
-            <br><br>
-            <label>Quantity :    </label>
-            <input type="text" id="qtty" name="qtty" required>
-            <br><br>
-            <label>Payment Method : </label>
-            <input type="text" id="date" value="Cash on Delivery" readonly>
-            <br><br>
-            <button type="submit" id="submit" name="submit" onclick="validate()">Confirm</button>
-            <button type="reset" id="reset" onclick="resetForm()">Clear</button>
+    </script>         
 
-        </form> -->
-    </div>  
+    <?php   
 
-
-    <?php        
+// ........................Add Data to the Database...............................
+    
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\Exception;    
 
         
         if (isset($_POST['submit'])) {
@@ -295,6 +259,7 @@
         $name = $_POST["name"];
         $htel = $_POST["htel"];
         $ltel = $_POST["ltel"];
+        $email = $_POST["email"];
         $adrs = $_POST["adrs"];
         $itm = $_POST["itm"];
         $size = $_POST["size"];
@@ -309,39 +274,92 @@
     
         $conn = new mysqli( $server,$user , $pass,$db) ;
         $sql = "INSERT INTO oders (date,time,name,mobileNo,landNo,address,itemNo,size,quantity) 
-        VALUES ('$date','$time','$name','$htel','$ltel','$adrs','$itm','$size','$qtty')" ;
-
-        
+        VALUES ('$date','$time','$name','$htel','$ltel','$adrs','$itm','$size','$qtty')" ;        
     
         
         if(mysqli_query($conn, $sql)){
             echo '<script>
-            document.getElementById("msg").style.display = "block";
-        </script>';
+                document.getElementById("msg").style.display = "block";
+            </script>';
+
             echo '<script> 
             document.getElementById("form").reset();
             window.close();
             </script>';
+            sendMail();
+
         } else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
             exit();
         }
         }
 
+// ......................Send Mail Function..........................................
+
+        function sendMail() {
         
+            require_once "PHPMailer/PHPMailer.php";
+            require_once "PHPMailer/SMTP.php";
+            require_once "PHPMailer/Exception.php";
 
-        
+            $mail = new PHPMailer();
 
-        
-    
-    ?>
+            $date = $_POST["date"];
+            $time = $_POST["time"];
+            $name = $_POST["name"];
+            $htel = $_POST["htel"];
+            $ltel = $_POST["ltel"];
+            $email = $_POST["email"];
+            $adrs = $_POST["adrs"];
+            $itm = $_POST["itm"];
+            $size = $_POST["size"];
+            $qtty = $_POST["qtty"];
 
-        
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'fashionstorecolombo@gmail.com'; 
+            $mail->Password = 'mit2017@wad'; 
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+
+            $mail->setFrom('fashionstorecolombo@gmail.com', 'Fashion Store');
+            $mail->addAddress($email , $name) ; 
+
+            $mail->Subject = 'Oder Confirmation';
+            $mail->isHTML(true);
+            $mailContent = '
+            <div style="margin: 30px 20px 20px 60px">
+                <h1 style="text-align: center;">You have successfully placed the oder</h1>
+
+                <p>Date :' .$date.'</p>
+                <p>Time :' .$time.'</p>
+
+                <p>Customer Name           :<i>' .$name.'</i></p>
+                <p>Contact Number(Mobile)  :<i>' .$htel.'</i></p>
+                <p>Contact Number(Fixed)   :<i>' .$ltel.'</i></p>
+                <p>Email                   :<i>' .$email.'</i></p>
+                <p>Address                 :<i>' .$adrs.'</i></p>
+                <p>Item Code               :<i>' .$itm.'</i></p>
+                <p>Size                    :<i>' .$size.'</i></p>
+                <p>Quantity                :<i>' .$qtty.'</i></p>
+
+                <p style="color:blue">Your oder will be received you within 10 working days.</p>
+                <h4 style="text-align: center;">----  Thank You for shopping with us .  ---</h4>
+            </div>                
+                
+                ';
+
+            $mail->Body = $mailContent;
 
 
-    
-    
+            if($mail->send()){
+                echo 'Message has been sent';
+            }else{
+                echo 'Message could not be sent.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            }
+        }   
+    ?>     
 </body>
-
-
 </html>
