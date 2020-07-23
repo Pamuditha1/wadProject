@@ -6778,7 +6778,7 @@ a.close.disabled {
 .carousel {
     position: relative;
     height: 400px;
-    margin: 20px 40px 0 40px;
+    margin-top: 40px;
     background-color: black;
 }
 

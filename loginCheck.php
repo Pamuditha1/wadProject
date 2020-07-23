@@ -1,23 +1,25 @@
 <?php 
     
-    $uname = $_POST['uname'];
-    $pass = $_POST['pswrd'];
+    $uname = $_REQUEST['uname'];
+    $pass = $_REQUEST['pswrd'];
 
     if ($uname == "admin" && $pass == "ADMIN") {
-        echo'<script>
 
-            window.open("showDatabase.php");
-            document.location.reload(true);
-
-        </script>
-        ';
-
+        session_start();
+        $_SESSION["uname"] = $uname;
+        $_SESSION["pass"] = $pass;
+        header( 'Location: showDatabase.php' );
+        
+        
     } else {
         echo '
-           <script> document.getElementById("mBody").innerHTML = "Invalid Username or Password"; </script>
+           <h1 style="color:red;text-align:center;"> Invalid Username or Password</h1>
+           <script>
+                alert("Invalid Username or Password");
+                window.close();
+           </script>
         ';
-    }
 
-    
+    }   
 
 ?>
