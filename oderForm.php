@@ -93,7 +93,7 @@
                         <label for="name" class="control-label">Name : 
                             <i id="nameI" class="material-icons" style="font-size:24px;color:green;display:none">check</i>  
                         </label>
-                        <input class="form-control" type="text" id="name" name="name" onblur="nameValidate()" onfocus="clearError('nameErr')"required>  
+                        <input class="form-control" type="text" id="name" name="name" onblur="nameValidate(this.value)" onfocus="clearError('nameErr')"required>  
                                             
                         <span class="help-block validError" id="nameErr"></span>
                     </div>
@@ -101,19 +101,22 @@
                         <label for="htel" class="control-label">Contact No (Mobile) : 
                             <i id="htelI" class="material-icons" style="font-size:24px;color:green;display:none">check</i> 
                         </label>
-                        <input class="form-control" type="text" id="htel" name="htel" onblur="htelValidate()" onfocus="clearError('htelErr')" required>                        
+                        <input class="form-control" type="text" id="htel" name="htel" onblur="htelValidate(this.value)" onfocus="clearError('htelErr')" required>                        
                         <span class="help-block validError" id="htelErr"></span>
                     </div>
                     <div class="form-group formMargin">
                         <label for="ltel" class="control-label">Contact No (Land) : 
                             <i id="ltelI" class="material-icons" style="font-size:24px;color:green;display:none">check</i> 
                         </label>
-                        <input class="form-control" type="text" id="ltel" name="ltel" onblur="ltelValidate()" onfocus="clearError('ltelErr')" >
+                        <input class="form-control" type="text" id="ltel" name="ltel" onblur="ltelValidate(this.value)" onfocus="clearError('ltelErr')" >
                         <span class="help-block validError" id="ltelErr"></span>
                     </div>
                     <div class="form-group formMargin">
-                        <label for="email" class="control-label">Email :    </label>
-                        <input class="form-control" type="text" id="email" name="email">
+                        <label for="email" class="control-label">Email : 
+                        	<i id="emailI" class="material-icons" style="font-size:24px;color:green;display:none">check</i>    
+                        </label>
+                        <input class="form-control" type="text" id="email" name="email" onblur="emailValidate(this.value)" onfocus="clearError('emailErr')">
+                        <span class="help-block validError" id="emailErr"></span>
                     </div>
                     <div class="form-group formMargin">
                         <label for="adrs" class="control-label">Address :    </label>
@@ -138,7 +141,7 @@
                         <label for="qtty" class="control-label">Quantity :    
                             <i id="qttyI" class="material-icons" style="font-size:24px;color:green;display:none">check</i> 
                         </label>
-                        <input class="form-control" type="text" id="qtty" name="qtty" onblur="quantityValidate()" onfocus="clearError('qttyErr')"required>                     
+                        <input class="form-control" type="text" id="qtty" name="qtty" onblur="quantityValidate(this.value)" onfocus="clearError('qttyErr')"required>                     
                         <span class="help-block validError" id="qttyErr"></span>
                     </div>
                     <div class="form-group formMargin">
@@ -184,59 +187,89 @@
 
         }
 
-        function nameValidate() {
-            var name = document.getElementById("name").value;
-            var nameError = "Name should contain only charactors and More than 3 charactors";
-            if(reg.test(name) ) {
 
-                document.getElementById("nameErr").innerHTML = nameError;
-                document.getElementById("nameI").style.display = 'none';
-                
-            }
-            else{
+        function nameValidate(val) {
+			var pattern=/^[a-zA-Z][a-zA-Z|\s]{1,}[a-zA-Z]$/;
+			var msgString="";
+			
+			if (pattern.test(val)!=true){
+				msgString="Name must contain only alphabetical characters (min 3)"
+				document.getElementById("nameI").style.display = 'none';
+			}
+			else{
                 document.getElementById("nameI").style.display = 'inline';
             }
-        }
+
+			document.getElementById('nameErr').innerHTML=msgString;
+		}
 
         var reg = /^\d+$/;
         var telError = "Mobile number should contain only numbers and Length=10";
 
-        function htelValidate() {
-            var htel = document.getElementById("htel").value;
-            if(!reg.test(htel)) {
 
-                document.getElementById("htelErr").innerHTML = telError;
-                document.getElementById("htelI").style.display = 'none';            
-            }
-            else{
+        function htelValidate(val) {
+			var pattern=/^\d{10}$/;
+			var msgString="";
+			
+			if (pattern.test(val)!=true){
+				msgString="Contact number must contain exactly 10 numerical characters"
+				document.getElementById("htelI").style.display = 'none'; 
+			}
+			else{
                 document.getElementById("htelI").style.display = 'inline';
             }
-        }
 
-        function ltelValidate() {
-            var ltel = document.getElementById("ltel").value;
-            if(!reg.test(ltel)) {
+			document.getElementById('htelErr').innerHTML=msgString;
+		}
 
-                document.getElementById("ltelErr").innerHTML = telError;
-                document.getElementById("ltelI").style.display = 'none';
-            }
-            else{
+		function ltelValidate(val) {
+			var pattern=/^\d{10}$/;
+			var msgString="";
+			
+			if (pattern.test(val)!=true){
+				msgString="Contact number must contain exactly 10 numerical characters"
+				document.getElementById("ltelI").style.display = 'none';
+			}
+			else{
                 document.getElementById("ltelI").style.display = 'inline';
             }
-        }
 
-        function quantityValidate() {
-            var qtty = document.getElementById("qtty").value;
-            var qttyError = "Quantity should contain only numbers and More than 0";
-            if(!reg.test(qtty) || qtty<=0) {
+			document.getElementById('ltelErr').innerHTML=msgString;
+		}
+		function emailValidate(val) {
+			var pattern=/^[a-zA-Z].*[\w](@)[a-zA-Z]{1,}(\.com)$/;
+			var msgString="";
+			
+			if (pattern.test(val)!=true){
+                msgString="Please enter valid email address."
+                document.getElementById("emailI").style.display = 'none';
+			}
+			else{
+                document.getElementById("emailI").style.display = 'inline';
+            }
 
-                document.getElementById("qttyErr").innerHTML = qttyError;
-                document.getElementById("qttyI").style.display = 'none';
-                
-            }else{
+			document.getElementById('emailErr').innerHTML=msgString;
+		}
+
+
+        function quantityValidate(val) {
+			var pattern=/^\d{1,3}$/;
+			var msgString="";
+			
+			if((pattern.test(val)!=true)||(val<=0||val>5)){
+				if (pattern.test(val)!=true){
+					msgString="Quantity must contain only numerical characters.<br>"
+				}
+				if(val<=0||val>5){
+					msgString+="Quantity must be between 1 and 5";
+				}
+				document.getElementById("qttyI").style.display = 'none';
+			}
+			else{
                 document.getElementById("qttyI").style.display = 'inline';
             }
-        }
+			document.getElementById('qttyErr').innerHTML=msgString;
+		}
 
         function clearError(id) {
             document.getElementById(id).innerHTML = "";
@@ -246,7 +279,7 @@
 
     <?php   
 
-// ........................Add Data to the Database...............................
+// ........................   Add Data to the Database   ...............................
     
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;    
@@ -294,7 +327,7 @@
         }
         }
 
-// ......................Send Mail Function..........................................
+// ......................   Send Mail Function  ..........................................
 
         function sendMail() {
         
@@ -329,7 +362,7 @@
             $mail->Subject = 'Oder Confirmation';
             $mail->isHTML(true);
             $mailContent = '
-            <div style="margin: 30px 20px 20px 60px">
+            <div style="margin: 30px 20px 20px 40px">
                 <h1 style="text-align: center;">You have successfully placed the oder</h1>
 
                 <p>Date :' .$date.'</p>
