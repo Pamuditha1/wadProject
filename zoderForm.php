@@ -276,6 +276,7 @@
 			
 			if (pattern.test(val)!=true){
 				msgString="Please enter valid email address."
+                document.getElementById("emailI").style.display = 'none';
 			}
 			else{
                 document.getElementById("emailI").style.display = 'inline';
