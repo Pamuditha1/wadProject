@@ -1,10 +1,18 @@
+body{
+    background-color: #152238
+}
+
 #header {
     width: 100% auto;
     height: auto;
-    background-color: #f1c40f;
+    /*background-color: #f1c40f;*/
+    background-color: #f0f4ff;
     margin: 10px auto;
     border-radius: 10px;
     position: relative;
+}
+#Navbar{
+    background-color: #CECEFF!important;
 }
 
 #logo {
@@ -13,6 +21,41 @@
     margin: 10px;
     z-index: +10px;
 }
+
+#siteName{
+    
+    position: absolute;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 40px;    
+}
+#brand{
+    font-family: 'Ceviche One';font-size: 50px;
+}
+
+#tagline{
+    font-family: 'Dynalight';font-size: 35px;
+    text-align: center;
+    margin: -20px;
+}
+
+@media only screen and (max-width: 600px) {
+    #siteName{    
+        
+        top: 30%;
+        right: 15px;    
+    }
+    #brand{
+        font-size: 25px;        
+    }
+    
+    #tagline{
+        font-size: 10px;
+        margin: -15px;
+    }
+}
+
 
 .itemCode {
     background-color: yellow;
