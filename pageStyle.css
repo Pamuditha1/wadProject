@@ -22,6 +22,12 @@ body{
     z-index: +10px;
 }
 
+h1{
+    color: white;
+    opacity: 0.5;
+    margin:40px
+}
+
 #siteName{
     
     position: absolute;
@@ -31,11 +37,15 @@ body{
     right: 40px;    
 }
 #brand{
-    font-family: 'Ceviche One';font-size: 50px;
+    color: black;
+    margin: 0;
+    font-family: 'Ceviche One';
+    font-size: 50px;
 }
 
 #tagline{
-    font-family: 'Dynalight';font-size: 35px;
+    font-family: 'Dynalight';
+    font-size: 35px;
     text-align: center;
     margin: -20px;
 }
