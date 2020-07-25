@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- <link rel="stylesheet" type="text/css" href="mailStyle.css"> -->
-    <title>Odering Form</title>
+    <title>FS | Place Oder</title>
+    <link rel="icon" type="image/ico" href="logoT.jpg" />
 
     <style>
         #msg {
