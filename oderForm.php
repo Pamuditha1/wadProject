@@ -146,9 +146,9 @@
                     </div>
                     <div class="form-group formMargin" onmouseover="showProductImage()" onmouseleave="hideImg()">
                         <label for="item" class="control-label">Item Code :    </label>
-                        <input class="form-control col-sm-8" type="text" id="itm" name="itm" value="<?php echo "$itemCode" ?>" readonly required>
+                        <input class="form-control col-sm-8" type="text" id="itm" name="itm" value="<?php echo $itemCode; ?>" readonly required>
                         <div class="col-sm-12">
-                            <img  id="showPimg" src=" <?php echo "$image" ?> " height="200px" width="auto" responsive>
+                            <img  id="showPimg" src=" <?php echo $image; ?> " height="200px" width="auto" responsive>
                         </div>
                         <!-- <p style="margin-left: 5%;color:blue">*copy the item code from the product view</p> -->
                     </div>                    
@@ -234,7 +234,7 @@
 
 
         function nameValidate(val) {
-			var pattern=/^[a-zA-Z][a-zA-Z|\s]{1,}[a-zA-Z]$/;
+			var pattern=/^([a-zA-Z][a-zA-Z|\s]*){3,}$/;
 			var msgString="";
 			
 			if (pattern.test(val)!=true){
