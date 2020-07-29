@@ -120,21 +120,24 @@
                         <label for="htel" class="control-label">Contact No (Mobile) : 
                             <i id="htelI" class="material-icons" style="font-size:24px;color:green;display:none">check</i> 
                         </label>
-                        <input class="form-control" type="text" id="htel" name="htel" onblur="htelValidate(this.value)" onfocus="clearError('htelErr')" required>                        
+                        <input class="form-control" type="tel" id="htel" name="htel" onblur="htelValidate(this.value)" 
+                        onfocus="clearError('htelErr')" maxlength=10 placeholder="07XXXXXXXX" required>                        
                         <span class="help-block validError" id="htelErr"></span>
                     </div>
                     <div class="form-group formMargin">
                         <label for="ltel" class="control-label">Contact No (Land) : 
                             <i id="ltelI" class="material-icons" style="font-size:24px;color:green;display:none">check</i> 
                         </label>
-                        <input class="form-control" type="text" id="ltel" name="ltel" onblur="ltelValidate(this.value)" onfocus="clearError('ltelErr')" >
+                        <input class="form-control" type="tel" id="ltel" name="ltel" onblur="ltelValidate(this.value)" 
+                        onfocus="clearError('ltelErr')" maxlength=10 placeholder="0XXXXXXXXX" >
                         <span class="help-block validError" id="ltelErr"></span>
                     </div>
                     <div class="form-group formMargin">
                         <label for="email" class="control-label">Email : 
                         	<i id="emailI" class="material-icons" style="font-size:24px;color:green;display:none">check</i>    
                         </label>
-                        <input class="form-control" type="text" id="email" name="email" onblur="emailValidate(this.value)" onfocus="clearError('emailErr')">
+                        <input class="form-control" type="email" id="email" name="email" onblur="emailValidate(this.value)" 
+                        onfocus="clearError('emailErr')" placeholder="example@mail.com" required>
                         <span class="help-block validError" id="emailErr"></span>
                     </div>
                     <div class="form-group formMargin">
@@ -163,7 +166,8 @@
                         <label for="qtty" class="control-label">Quantity :    
                             <i id="qttyI" class="material-icons" style="font-size:24px;color:green;display:none">check</i> 
                         </label>
-                        <input class="form-control" type="text" id="qtty" name="qtty" onblur="quantityValidate(this.value)" onfocus="clearError('qttyErr')"required>                     
+                        <input class="form-control" type="number" id="qtty" name="qtty" min=1 max=5 onblur="quantityValidate(this.value)" 
+                        onfocus="clearError('qttyErr')" placeholder="1-5" required>                     
                         <span class="help-block validError" id="qttyErr"></span>
                     </div>
                     <div class="form-group formMargin">
@@ -371,17 +375,19 @@
                 document.getElementById("msg").style.display = "block";
             </script>';
 
-            // echo '<script> 
+            // echo '<script>                
             // document.getElementById("form").reset();
            
             // </script>';
 
             echo '<script>
-                var t = setInterval(close,3000);
-                function close() {
-                    window.location.replace("index.html");
-                }
-                // clearInterval(t);         
+                if(document.getElementById("msg").style.display == "block") {
+                    var t = setInterval(close,3000);
+                    function close() {
+                        window.location.replace("index.html");
+                    }
+                    clearInterval(t);   
+                }      
                 
             </script>'; 
             // echo '<script>         
